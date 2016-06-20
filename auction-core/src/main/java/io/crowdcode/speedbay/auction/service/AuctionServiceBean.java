@@ -47,7 +47,7 @@ public class AuctionServiceBean implements AuctionService {
     }
 
     @Override
-    public List<Auction> findRunning() {
+    public List<Auction> findAll() {
         return auctionRepository.findAll();
     }
 
