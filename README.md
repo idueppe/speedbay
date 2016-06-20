@@ -21,7 +21,7 @@ Class Diagram:
 </a>
 <br />
 <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
-	speedbay
+	Speedbay
 </span> 
 by 
 <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Ingo Düppe</span> 
