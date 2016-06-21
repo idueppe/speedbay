@@ -16,4 +16,9 @@
 
     </bean>
 
+    <bean id="newsConfiguration" class="io.crowdcode.speedbay.auction.config.NewsConfiguration"/>
+
+    <bean class="org.springframework.context.annotation.ConfigurationClassPostProcessor"/>
+
+
 </beans>
