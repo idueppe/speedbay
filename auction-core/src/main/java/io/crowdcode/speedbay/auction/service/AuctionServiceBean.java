@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static io.crowdcode.speedbay.common.AnsiColor.green;
 
@@ -49,6 +50,14 @@ public class AuctionServiceBean implements AuctionService {
     @Override
     public List<Auction> findAuctions() {
         return auctionRepository.findAll();
+    }
+
+    @Override
+    public List<Auction> findAllRunning() {
+        LocalDateTime now = LocalDateTime.now();
+        return auctionRepository.findAll()
+                .parallelStream().filter(a -> a.getBeginDate().isBefore(now)
+                && a.getExpireDate().isAfter(now)).collect(Collectors.toList());
     }
 
     @Override

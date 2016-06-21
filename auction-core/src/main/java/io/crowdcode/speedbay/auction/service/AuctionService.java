@@ -30,6 +30,14 @@ public interface AuctionService {
      */
     List<Auction> findAuctions();
 
+
+    /**
+     * Find all running auctions
+     * @return List<Auction>
+     */
+    List<Auction> findAllRunning();
+
+
     /**
      * Find an Auction-Entity by its id;
      *

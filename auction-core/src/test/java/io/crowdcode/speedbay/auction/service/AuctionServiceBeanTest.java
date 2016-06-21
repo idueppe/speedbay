@@ -47,4 +47,21 @@ public class AuctionServiceBeanTest {
         Auction auction = service.findAuction(auctionId);
         assertThat(auction.getHighestBid().getAmount().doubleValue(), is(11.0));
     }
+
+    @Test
+    public void testFindAuctions() throws Exception {
+        AuctionService service = applicationContext.getBean("auctionService", AuctionService.class);
+        service.placeAuction(AuctionFixture.buildProductDetail());
+
+        assertThat(service.findAuctions().size(), is(1));
+    }
+
+    @Test
+    public void testFindAllRunning() throws Exception {
+        AuctionService service = applicationContext.getBean("auctionService", AuctionService.class);
+        service.placeAuction(AuctionFixture.buildProductDetail());
+
+        assertThat(service.findAllRunning().size(), is(0));
+
+    }
 }
