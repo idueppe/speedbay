@@ -1,6 +1,7 @@
 package io.crowdcode.speedbay.auction.model;
 
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,8 @@ public class Auction extends AbstractEntity<Auction, Long> {
     public Bid getHighestBid() {
         return bids
                 .stream()
-                .max((b1, b2) -> b1.getAmount().compareTo(b2.getAmount())).orElse(null);
+                .max((b1, b2) -> b1.getAmount().compareTo(b2.getAmount()))
+                .orElse(new Bid().withAmount(BigDecimal.valueOf(-1)));
     }
 
     public String getOwner() {
