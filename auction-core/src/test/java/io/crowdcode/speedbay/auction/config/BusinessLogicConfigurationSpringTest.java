@@ -33,7 +33,7 @@ public class BusinessLogicConfigurationSpringTest {
         Auction auction = auctionService.findAuction(auctionId);
         assertThat(auction.getHighestBid().getAmount().doubleValue(), is(11.0));
 
-        assertThat(auctionService.findAll(), hasSize(1));
+        assertThat(auctionService.findAuctions(), hasSize(1));
     }
 
 }
