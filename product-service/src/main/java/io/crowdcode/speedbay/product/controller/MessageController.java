@@ -11,7 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,7 +23,11 @@ import java.util.UUID;
 public class MessageController {
 
 
-    private List<Message> messages = Arrays.asList(new Message().withAuthor("ingo").withText("hi!"));
+    private List<Message> messages = new ArrayList<>();
+
+    public MessageController() {
+        this.messages.add(new Message().withAuthor("ingo").withText("hi!"));
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Message> getMessages() {

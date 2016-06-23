@@ -3,8 +3,8 @@ package io.crowdcode.speedbay.product.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.crowdcode.speedbay.product.ProductSpringApplication;
+import io.crowdcode.speedbay.product.model.Message;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,25 +46,27 @@ public class MessageControllerTest {
     }
 
     @Test
-    public void getMessages() throws Exception {
+    public void testGetMessages() throws Exception {
         mockMvc.perform(get("/messages"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
-                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$.[0].author","ingo").exists());
     }
 
     @Test
-    @Ignore
     public void testCreateMessage() throws Exception {
         mockMvc.perform(post("/messages")
                     .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                    .content("{author:'text'}"))
-//                            asJsonString(new Message().withAuthor("ich").withText("du"))))
-                .andDo(print());
-//                .andExpect(status().isCreated());
+                    .content(asJsonString(new Message().withAuthor("ich").withText("du"))))
+                .andDo(print())
+                .andExpect(status().isCreated());
+    }
 
+    @Test
+    public void testJsonString() throws Exception {
+        asJsonString(new Message().withAuthor("ich").withText("du"));
     }
 
     private String asJsonString(Object value) throws JsonProcessingException {
