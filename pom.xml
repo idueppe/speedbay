@@ -13,6 +13,7 @@
         <module>speedbay-parent</module>
         <module>speedbay-commons</module>
         <module>auction-core</module>
+        <module>product-service</module>
     </modules>
 
 </project>
