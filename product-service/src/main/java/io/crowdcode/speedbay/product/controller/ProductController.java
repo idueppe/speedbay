@@ -3,6 +3,7 @@ package io.crowdcode.speedbay.product.controller;
 import io.crowdcode.speedbay.product.model.Product;
 import io.crowdcode.speedbay.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.List;
  * @author Ingo Düppe (Crowdcode)
  */
 @RestController
+@RequestMapping(path="/products")
 public class ProductController {
 
     @Autowired
@@ -33,7 +36,7 @@ public class ProductController {
 
 
     @RequestMapping(path = "/{productId}", method = RequestMethod.GET)
-    public Product getProduct(@PathVariable Long productId) {
+    public Product getProduct(@PathVariable Long productId, HttpHeaders headers, HttpServletRequest request) {
         return productService.findProduct(productId);
     }
 
@@ -45,7 +48,6 @@ public class ProductController {
 
         return ResponseEntity.created(uri).body(null);
     }
-
 
 
 }

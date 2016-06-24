@@ -2,6 +2,7 @@ package io.crowdcode.speedbay.product.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.crowdcode.speedbay.product.MessageEndpoint;
 import io.crowdcode.speedbay.product.ProductSpringApplication;
 import io.crowdcode.speedbay.product.model.Message;
 import org.junit.Before;
@@ -54,6 +55,17 @@ public class MessageControllerTest {
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$.[0].author","ingo").exists());
     }
+
+    @Test
+    public void testGetSpecificMessages() throws Exception {
+        mockMvc.perform(get(MessageEndpoint.MESSAGES_MESSAGE_ID,1l))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$.[0].author","ingo").exists());
+    }
+
 
     @Test
     public void testCreateMessage() throws Exception {

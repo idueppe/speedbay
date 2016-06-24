@@ -14,8 +14,8 @@ public class GreetingController {
 
     @RequestMapping(path="/say/{vorname}/{nachname}", method = RequestMethod.GET)
     @ResponseBody
-    public String sayHello(@PathVariable("nachname") String nachName, @PathVariable("vorname") String vorname) {
-        return "Hello Spring! "+vorname + " " +nachName;
+    public String sayHello(@PathVariable("nachname") String nachname, @PathVariable("vorname") String vorname) {
+        return "Hello Spring! "+vorname + " " + nachname;
     }
 
     @RequestMapping("/goodbye")
