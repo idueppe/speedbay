@@ -6,6 +6,7 @@ import io.crowdcode.speedbay.product.fixture.ProductFixture;
 import io.crowdcode.speedbay.product.model.Product;
 import org.hamcrest.MatcherAssert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -40,6 +41,7 @@ import static org.hamcrest.Matchers.is;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(ProductSpringApplication.class)
 @WebIntegrationTest(randomPort = true)
+@Ignore
 public class ProductControllerIntegrationTest {
 
 
